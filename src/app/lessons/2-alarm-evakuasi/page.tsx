@@ -90,6 +90,13 @@ export default function Lesson2Page() {
     audioRef.current = new Audio("/assets/lesson2/alarm PA.mpeg")
   }, [])
 
+  useEffect(() => {
+    if (currentStep !== "alarm" && audioRef.current) {
+      audioRef.current.pause()
+      audioRef.current.currentTime = 0
+    }
+  }, [currentStep])
+
   const triggerAlarm = () => {
     setAlarmActive(true)
     audioRef.current?.play().catch(() => {})

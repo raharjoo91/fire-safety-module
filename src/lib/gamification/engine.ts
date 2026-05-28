@@ -19,10 +19,16 @@ export function getBadgeById(id: string): Badge | undefined {
   return BADGES.find((b) => b.id === id)
 }
 
+const MAX_XP = 600
+const XP_PER_LEVEL = 150
+
 export function calculateLevel(totalXP: number): { level: number; currentXP: number; nextLevelXP: number } {
-  const level = Math.floor(totalXP / 300) + 1
-  const currentXP = totalXP % 300
-  return { level, currentXP, nextLevelXP: 300 }
+  if (totalXP >= MAX_XP) {
+    return { level: 4, currentXP: XP_PER_LEVEL, nextLevelXP: XP_PER_LEVEL }
+  }
+  const level = Math.floor(totalXP / XP_PER_LEVEL) + 1
+  const currentXP = totalXP % XP_PER_LEVEL
+  return { level, currentXP, nextLevelXP: XP_PER_LEVEL }
 }
 
 export function buildMissionMap(completedLessons: string[]): MissionMapNode[] {

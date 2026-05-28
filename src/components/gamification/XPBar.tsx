@@ -5,13 +5,14 @@ interface XPBarProps {
 }
 
 export default function XPBar({ currentXP, nextLevelXP, level }: XPBarProps) {
-  const pct = Math.round((currentXP / nextLevelXP) * 100)
+  const isMax = currentXP >= nextLevelXP
+  const pct = isMax ? 100 : Math.round((currentXP / nextLevelXP) * 100)
 
   return (
     <div className="w-full max-w-xs mx-auto">
       <div className="flex justify-between text-xs text-gray-600 mb-1">
         <span>Level {level}</span>
-        <span>{currentXP} / {nextLevelXP} XP</span>
+        <span>{isMax ? "MAX" : `${currentXP} / ${nextLevelXP} XP`}</span>
       </div>
       <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden shadow-inner">
         <div

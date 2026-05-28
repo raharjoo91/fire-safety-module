@@ -26,7 +26,7 @@ export default function ProfilePage() {
           <div className="text-xs text-gray-500">Total XP</div>
         </div>
         <div className="bg-white rounded-xl p-4 shadow-sm border">
-          <div className="text-2xl font-bold text-green-600">{progress.completedLessons.length}/6</div>
+          <div className="text-2xl font-bold text-green-600">{progress.completedLessons.length}/4</div>
           <div className="text-xs text-gray-500">Misi Selesai</div>
         </div>
         <div className="bg-white rounded-xl p-4 shadow-sm border">
