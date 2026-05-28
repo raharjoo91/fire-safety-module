@@ -19,7 +19,7 @@ export default function Home() {
         </div>
         <h1 className="text-2xl font-bold text-blue-800">Tim Keselamatan Api</h1>
         <p className="text-gray-500 text-sm max-w-md mx-auto">
-          Selamat datang, <strong>Safety Squad</strong>! Selesaikan 6 misi untuk menjadi pahlawan keselamatan kebakaran di sekolahmu!
+          Selamat datang, <strong>Safety Squad</strong>! Selesaikan 4 misi untuk menjadi pahlawan keselamatan kebakaran di sekolahmu!
         </p>
       </div>
 
@@ -29,7 +29,7 @@ export default function Home() {
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-bold text-lg">Peta Misi</h2>
           <span className="text-xs text-gray-400">
-            {progress.completedLessons.length}/6 misi selesai
+            {progress.completedLessons.length}/4 misi selesai
           </span>
         </div>
         <MissionMap nodes={missionMap} />

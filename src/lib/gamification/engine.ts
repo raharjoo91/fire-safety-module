@@ -1,16 +1,14 @@
 import type { UserProgress, Badge, MissionMapNode } from "@/types/gamification"
 
 const BADGES: Badge[] = [
-  { id: "detektif-api", name: "Detektif Api", nameId: "Fire Detective", description: "Selesaikan Pelajaran 1", icon: "/assets/gamification/badge-detektif.png" },
-  { id: "siap-evakuasi", name: "Siap Evakuasi", nameId: "Evacuation Ready", description: "Selesaikan Pelajaran 2", icon: "/assets/gamification/badge-evakuasi.png" },
-  { id: "ahli-listrik", name: "Ahli Listrik", nameId: "Electrical Expert", description: "Selesaikan Pelajaran 3", icon: "/assets/gamification/badge-listrik.png" },
-  { id: "charger-cerdas", name: "Charger Cerdas", nameId: "Smart Charger", description: "Selesaikan Pelajaran 4", icon: "/assets/gamification/badge-charger.png" },
-  { id: "waspada", name: "Selalu Waspada", nameId: "Always Alert", description: "Selesaikan Pelajaran 5", icon: "/assets/gamification/badge-waspada.png" },
+  { id: "detektif-api", name: "Detektif Api", nameId: "Fire Detective", description: "Selesaikan Misi 1", icon: "/assets/gamification/badge-detektif.png" },
+  { id: "siap-evakuasi", name: "Siap Evakuasi", nameId: "Evacuation Ready", description: "Selesaikan Misi 2", icon: "/assets/gamification/badge-evakuasi.png" },
+  { id: "ahli-listrik", name: "Ahli Listrik", nameId: "Electrical Expert", description: "Selesaikan Misi 3", icon: "/assets/gamification/badge-listrik.png" },
   { id: "safety-squad", name: "Safety Squad", nameId: "Safety Squad", description: "Selesaikan Misi Puncak", icon: "/assets/gamification/badge-squad.png" },
-  { id: "sempurna", name: "Keselamatan Sempurna", nameId: "Perfect Safety", description: "Dapatkan skor sempurna di semua pelajaran", icon: "/assets/gamification/badge-sempurna.png" },
+  { id: "sempurna", name: "Keselamatan Sempurna", nameId: "Perfect Safety", description: "Dapatkan skor sempurna di semua misi", icon: "/assets/gamification/badge-sempurna.png" },
 ]
 
-const LESSON_XP = [100, 100, 150, 100, 100, 200]
+const LESSON_XP = [100, 150, 150, 200]
 const SAFETY_METER_MAX = 100
 
 export function getBadges(): Badge[] {
@@ -30,11 +28,9 @@ export function calculateLevel(totalXP: number): { level: number; currentXP: num
 export function buildMissionMap(completedLessons: string[]): MissionMapNode[] {
   const lessons = [
     { lessonId: "1-penyebab-kebakaran", title: "Penyebab Kebakaran", xpReward: 100 },
-    { lessonId: "2-alarm-evakuasi", title: "Alarm & Evakuasi", xpReward: 100 },
-    { lessonId: "3-risiko-listrik", title: "Risiko Listrik", xpReward: 150 },
-    { lessonId: "4-pengisian-baterai", title: "Pengisian Baterai", xpReward: 100 },
-    { lessonId: "5-tanda-peringatan", title: "Tanda Peringatan", xpReward: 100 },
-    { lessonId: "6-misi-puncak", title: "Misi Puncak", xpReward: 200 },
+    { lessonId: "2-alarm-evakuasi", title: "Alarm & Evakuasi", xpReward: 150 },
+    { lessonId: "3-risiko-listrik-dan-pengisian-baterai", title: "Risiko Listrik & Pengisian Baterai", xpReward: 150 },
+    { lessonId: "4-misi-puncak", title: "Misi Puncak", xpReward: 200 },
   ]
 
   return lessons.map((lesson, index) => {

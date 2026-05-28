@@ -48,20 +48,18 @@ export function useProgress() {
         updated.totalXP += xpReward
         updated.safetyScore = Math.min(SAFETY_METER_MAX, updated.safetyScore + Math.round(score * 0.2))
 
-        const badge = getBadgeById(`badge-${lessonId}`) || getBadgeById(
-          ["detektif-api", "siap-evakuasi", "ahli-listrik", "charger-cerdas", "waspada", "safety-squad"][
-            ["1-penyebab-kebakaran", "2-alarm-evakuasi", "3-risiko-listrik", "4-pengisian-baterai", "5-tanda-peringatan", "6-misi-puncak"].indexOf(lessonId)
-          ]
-        )
+        const badgeIds = ["detektif-api", "siap-evakuasi", "ahli-listrik", "safety-squad"]
+        const lessonIds = ["1-penyebab-kebakaran", "2-alarm-evakuasi", "3-risiko-listrik-dan-pengisian-baterai", "4-misi-puncak"]
+        const badge = getBadgeById(`badge-${lessonId}`) || getBadgeById(badgeIds[lessonIds.indexOf(lessonId)])
         if (badge && !updated.badges.find((b) => b.id === badge.id)) {
           updated.badges = [...updated.badges, { ...badge, unlockedAt: new Date().toISOString() }]
         }
 
         updated.lastActivity = new Date().toISOString()
 
-        const lessonIndex = ["1-penyebab-kebakaran", "2-alarm-evakuasi", "3-risiko-listrik", "4-pengisian-baterai", "5-tanda-peringatan", "6-misi-puncak"].indexOf(lessonId)
-        if (lessonIndex >= 0 && lessonIndex < 5) {
-          updated.currentLesson = ["1-penyebab-kebakaran", "2-alarm-evakuasi", "3-risiko-listrik", "4-pengisian-baterai", "5-tanda-peringatan", "6-misi-puncak"][lessonIndex + 1]
+        const lessonIndex = lessonIds.indexOf(lessonId)
+        if (lessonIndex >= 0 && lessonIndex < 3) {
+          updated.currentLesson = lessonIds[lessonIndex + 1]
         }
 
         save(updated)
