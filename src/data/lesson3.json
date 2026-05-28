@@ -1,0 +1,50 @@
+{
+  "id": "3-risiko-listrik",
+  "title": "Risiko Peralatan Listrik",
+  "titleEn": "Electrical Appliance Risks",
+  "order": 3,
+  "estimatedMinutes": 35,
+  "description": "Mengidentifikasi bahaya listrik di kelas dan kamar asrama.",
+  "xpReward": 150,
+  "badgeId": "ahli-listrik",
+  "activities": [
+    {
+      "id": "intro",
+      "type": "info",
+      "title": "Listrik: Sahabat atau Musuh?",
+      "instruction": "Listrik sangat berguna, tapi kalau salah pakai bisa berbahaya. Yuk, cari tahu bahayanya!",
+      "content": {
+        "fact": "Kabel yang rusak, stopkontak kebanyakan colokan, dan power strip palsu adalah penyebab utama kebakaran listrik di sekolah.",
+        "image": "/assets/backgrounds/03-lesson3-6-dorm-room-background.png"
+      }
+    },
+    {
+      "id": "hazard-spotting-kelas",
+      "type": "hazard-spotting",
+      "title": "Spot the Hazard: Ruang Kelas",
+      "instruction": "Klik pada bagian gambar yang menurutmu berbahaya!",
+      "content": {
+        "image": "/assets/backgrounds/02-lesson1-3-classroom-background.png",
+        "hotspots": [
+          { "id": "h1", "x": 20, "y": 40, "width": 15, "height": 10, "label": "Stopkontak kebanyakan colokan", "isHazard": true, "explanation": "Terlalu banyak colokan di satu stopkontak bisa menyebabkan kebakaran." },
+          { "id": "h2", "x": 60, "y": 30, "width": 12, "height": 8, "label": "Kabel menjuntai di lantai", "isHazard": true, "explanation": "Kabel di lantai bisa bikin tersandung dan rusak." },
+          { "id": "h3", "x": 40, "y": 70, "width": 10, "height": 10, "label": "Meja dan kursi tertata rapi", "isHazard": false, "explanation": "Ini sudah aman dan rapi. Bagus!" }
+        ]
+      }
+    },
+    {
+      "id": "hazard-spotting-asrama",
+      "type": "hazard-spotting",
+      "title": "Spot the Hazard: Kamar Asrama",
+      "instruction": "Klik pada bagian yang berbahaya di kamar asrama ini!",
+      "content": {
+        "image": "/assets/backgrounds/03-lesson3-6-dorm-room-background.png",
+        "hotspots": [
+          { "id": "h4", "x": 30, "y": 50, "width": 15, "height": 12, "label": "Kabel sambung menyambung (daisy chain)", "isHazard": true, "explanation": "Menyambung power strip bertumpuk sangat berbahaya dan bisa overload." },
+          { "id": "h5", "x": 70, "y": 20, "width": 12, "height": 10, "label": "Charger hp di atas kasur", "isHazard": true, "explanation": "Ngecas di kasur bisa bikin overheat karena panas tidak bisa keluar." },
+          { "id": "h6", "x": 50, "y": 75, "width": 10, "height": 8, "label": "Lemari pakaian tertutup rapi", "isHazard": false, "explanation": "Ini aman. Tidak ada bahaya di sini!" }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "id": "2-alarm-evakuasi",
+  "title": "Alarm, Evakuasi, dan Keselamatan",
+  "titleEn": "Alarm, Evacuation & Safety",
+  "order": 2,
+  "estimatedMinutes": 30,
+  "description": "Belajar mengenali alarm kebakaran, mengambil keputusan evakuasi yang tepat, dan berkumpul di titik aman.",
+  "xpReward": 100,
+  "badgeId": "siap-evakuasi",
+  "activities": [
+    {
+      "id": "intro",
+      "type": "info",
+      "title": "Bunyi Alarm Bukan Main-main!",
+      "instruction": "Saat alarm berbunyi, kamu punya waktu sangat singkat untuk keluar dengan selamat.",
+      "content": {
+        "fact": "Dalam kebakaran, asap adalah pembunuh utama — bukan api. Asap dapat membuatmu pingsan dalam hitungan detik.",
+        "image": "/assets/lesson-specific/11-lesson2-alarm-evacuation-scene.png"
+      }
+    },
+    {
+      "id": "scenario-1",
+      "type": "branching-scenario",
+      "title": "Alarm Berbunyi Tengah Malam",
+      "instruction": "Kamu sedang tidur di asrama. Tiba-tiba alarm kebakaran berbunyi. Apa yang kamu lakukan?",
+      "content": {
+        "steps": [
+          {
+            "id": "s1",
+            "scenario": "Jam menunjukkan pukul 2 pagi. Alarm kebakaran di asramamu berbunyi keras. Kamu terbangun dan mencium bau asap.",
+            "choices": [
+              { "id": "s1a", "text": "Langsung keluar lewat pintu darurat terdekat", "isSafe": true, "explanation": "Tepat! Keluar secepat mungkin lewat jalur evakuasi.", "nextStepId": "s2", "safetyDelta": 10 },
+              { "id": "s1b", "text": "Mengambil tas dan barang-barang dulu", "isSafe": false, "explanation": "Jangan buang waktu! Barang bisa diganti, nyawa tidak.", "nextStepId": "s2", "safetyDelta": -15 },
+              { "id": "s1c", "text": "Melihat dari jendela siapa yang ribut", "isSafe": false, "explanation": "Setiap detik berharga! Segera evakuasi!", "nextStepId": "s2", "safetyDelta": -10 }
+            ],
+            "feedback": {}
+          },
+          {
+            "id": "s2",
+            "scenario": "Kamu sudah di lorong asrama. Asap mulai terlihat di langit-langit. Ada dua arah: satu menuju pintu keluar, satu lagi ke arah lain.",
+            "choices": [
+              { "id": "s2a", "text": "Merayap rendah di bawah asap menuju pintu keluar", "isSafe": true, "explanation": "Benar! Asap naik ke atas, jadi merayap rendah lebih aman.", "nextStepId": "s3", "safetyDelta": 10 },
+              { "id": "s2b", "text": "Berlari cepat berdiri tegak ke pintu keluar", "isSafe": false, "explanation": "Asap beracun terkumpul di atas. Merayaplah!", "nextStepId": "s3", "safetyDelta": -15 }
+            ],
+            "feedback": {}
+          },
+          {
+            "id": "s3",
+            "scenario": "Kamu berhasil keluar dari gedung. Sekarang kamu melihat teman-temanmu berkumpul di beberapa tempat.",
+            "choices": [
+              { "id": "s3a", "text": "Pergi ke titik kumpul yang sudah ditentukan", "isSafe": true, "explanation": "Tepat! Selalu kumpul di titik aman yang sudah ditentukan.", "nextStepId": null, "safetyDelta": 10 },
+              { "id": "s3b", "text": "Pulang ke rumah karena sudah dekat", "isSafe": false, "explanation": "Kamu harus tetap di titik kumpul agar guru bisa memastikan semua selamat.", "nextStepId": null, "safetyDelta": -10 }
+            ],
+            "feedback": {}
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Tim Keselamatan Api",
+  "short_name": "Keselamatan Api",
+  "description": "Edukasi keselamatan kebakaran gamifikasi untuk SMP Indonesia",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1E90FF",
+  "icons": [
+    {
+      "src": "/assets/branding/01-logo-tim-keselamatan-api.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

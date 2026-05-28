@@ -1,0 +1,38 @@
+{
+  "id": "1-penyebab-kebakaran",
+  "title": "Penyebab Kebakaran di Sekolah",
+  "titleEn": "Fire Causes at School",
+  "order": 1,
+  "estimatedMinutes": 30,
+  "description": "Mengenal penyebab kebakaran di sekolah dan asrama, serta apa yang bisa kamu kendalikan.",
+  "xpReward": 100,
+  "badgeId": "detektif-api",
+  "activities": [
+    {
+      "id": "intro",
+      "type": "info",
+      "title": "Tahukah Kamu?",
+      "instruction": "Kebakaran di sekolah lebih sering terjadi daripada yang kamu kira. Yuk, kita pelajari penyebabnya!",
+      "content": {
+        "fact": "Berdasarkan data NFPA, rata-rata ada 3.230 kebakaran di properti sekolah setiap tahun di Amerika Serikat. Penyebab utama: masalah kelistrikan (17%).",
+        "image": "/assets/backgrounds/02-lesson1-3-classroom-background.png"
+      }
+    },
+    {
+      "id": "card-sort",
+      "type": "card-sort",
+      "title": "Apa yang Memulai Kebakaran?",
+      "instruction": "Seret kartu ke kolom yang benar: Aman atau Berbahaya",
+      "content": {
+        "cards": [
+          { "id": "c1", "text": "Stopkontak kebanyakan colokan", "category": "unsafe", "explanation": "Kelebihan beban listrik bisa menyebabkan korsleting dan api." },
+          { "id": "c2", "text": "Mencabut charger saat tidak dipakai", "category": "safe", "explanation": "Mencabut charger mengurangi risiko korsleting." },
+          { "id": "c3", "text": "Kabel yang terkelupas", "category": "unsafe", "explanation": "Kabel terkelupas bisa menyebabkan korsleting dan sengatan listrik." },
+          { "id": "c4", "text": "Mematikan kompor setelah masak", "category": "safe", "explanation": "Selalu matikan kompor untuk mencegah kebocoran gas." },
+          { "id": "c5", "text": "Menaruh hp di bawah bantal saat ngecas", "category": "unsafe", "explanation": "HP yang panas di tempat tertutup bisa overheat dan terbakar." },
+          { "id": "c6", "text": "Menggunakan power strip bersertifikat SNI", "category": "safe", "explanation": "Power strip SNI sudah teruji aman untuk pemakaian sehari-hari." }
+        ]
+      }
+    }
+  ]
+}

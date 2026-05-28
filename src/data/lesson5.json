@@ -1,0 +1,59 @@
+{
+  "id": "5-tanda-peringatan",
+  "title": "Tanda Peringatan Bahaya Listrik",
+  "titleEn": "Electrical Warning Signs",
+  "order": 5,
+  "estimatedMinutes": 25,
+  "description": "Mengenali tanda-tanda bahaya listrik dan cara melaporkannya.",
+  "xpReward": 100,
+  "badgeId": "waspada",
+  "activities": [
+    {
+      "id": "intro",
+      "type": "info",
+      "title": "Kenali Tanda Bahaya!",
+      "instruction": "Listrik sering memberi tanda sebelum terjadi masalah. Yuk, kenali tanda-tandanya!",
+      "content": {
+        "fact": "ESFI menyebutkan bahwa stopkontak yang hangat, bau terbakar, dan suara mendesis adalah tanda bahaya listrik.",
+        "image": "/assets/icons/09-icons-warning-signs.png"
+      }
+    },
+    {
+      "id": "quiz-warning",
+      "type": "quiz",
+      "title": "Apa Tanda Bahaya Ini?",
+      "instruction": "Pilih jawaban yang tepat untuk setiap tanda bahaya listrik.",
+      "content": {
+        "questions": [
+          {
+            "id": "q1",
+            "question": "Apa yang harus kamu lakukan jika stopkontak terasa hangat saat disentuh?",
+            "options": [
+              { "id": "q1a", "text": "Teruskan pakai, nanti juga dingin sendiri", "isCorrect": false, "explanation": "Stopkontak hangat menandakan ada masalah serius!" },
+              { "id": "q1b", "text": "Laporkan ke guru atau petugas sekolah", "isCorrect": true, "explanation": "Benar! Stopkontak hangat harus segera diperiksa oleh ahlinya." },
+              { "id": "q1c", "text": "Siram dengan air biar dingin", "isCorrect": false, "explanation": "Jangan pernah menyiram listrik dengan air! Sangat berbahaya!" }
+            ]
+          },
+          {
+            "id": "q2",
+            "question": "Kamu mencium bau seperti kabel terbakar di kelas. Apa yang kamu lakukan?",
+            "options": [
+              { "id": "q2a", "text": "Buka jendela, biar baunya hilang", "isCorrect": false, "explanation": "Bau terbakar berarti ada yang sudah terbakar! Jangan diabaikan." },
+              { "id": "q2b", "text": "Diam saja, mungkin dari luar", "isCorrect": false, "explanation": "Lebih baik periksa dan laporkan daripada menyesal." },
+              { "id": "q2c", "text": "Laporkan ke guru dan matikan peralatan listrik", "isCorrect": true, "explanation": "Tepat! Cepat laporkan dan amankan area." }
+            ]
+          },
+          {
+            "id": "q3",
+            "question": "Apa yang harus dilakukan jika mendengar suara mendesis dari stopkontak?",
+            "options": [
+              { "id": "q3a", "text": "Colokkan telinga untuk mendengar lebih jelas", "isCorrect": false, "explanation": "Jangan mendekat! Suara mendesis menandakan percikan api." },
+              { "id": "q3b", "text": "Segera matikan listrik dari panel dan laporkan", "isCorrect": true, "explanation": "Tepat! Matikan aliran listrik dan panggil petugas." },
+              { "id": "q3c", "text": "Cabut semua yang terhubung dan lanjutkan aktivitas", "isCorrect": false, "explanation": "Setelah mencabut, tetap harus melaporkan ke petugas!" }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

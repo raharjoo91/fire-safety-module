@@ -1,0 +1,38 @@
+{
+  "id": "4-pengisian-baterai",
+  "title": "Pengisian Baterai yang Aman",
+  "titleEn": "Safe Battery Charging",
+  "order": 4,
+  "estimatedMinutes": 30,
+  "description": "Praktik aman mengecas HP, tablet, laptop, dan power bank.",
+  "xpReward": 100,
+  "badgeId": "charger-cerdas",
+  "activities": [
+    {
+      "id": "intro",
+      "type": "info",
+      "title": "Kebiasaan Ngecas yang Aman",
+      "instruction": "Setiap hari kamu ngecas HP atau laptop. Tapi tahukah kamu cara yang benar dan aman?",
+      "content": {
+        "fact": "Baterai lithium-ion bisa overheat dan terbakar jika dicas di tempat yang tidak sirkulasi udaranya.",
+        "image": "/assets/lesson-specific/08-lesson4-safe-vs-unsafe-charging.png"
+      }
+    },
+    {
+      "id": "drag-sort",
+      "type": "drag-sort",
+      "title": "Aman atau Tidak Aman?",
+      "instruction": "Kelompokkan kebiasaan ngecas ini ke kolom Aman atau Berbahaya.",
+      "content": {
+        "items": [
+          { "id": "d1", "text": "Ngecas HP di meja belajar", "category": "safe", "explanation": "Meja belajar memiliki sirkulasi udara yang baik." },
+          { "id": "d2", "text": "Ngecas HP di bawah bantal", "category": "unsafe", "explanation": "Tertutup bisa menyebabkan overheat dan kebakaran." },
+          { "id": "d3", "text": "Menggunakan charger original", "category": "safe", "explanation": "Charger original sudah teruji aman." },
+          { "id": "d4", "text": "Ngecas HP semalaman", "category": "unsafe", "explanation": "Overcharging bisa merusak baterai dan menyebabkan overheat." },
+          { "id": "d5", "text": "Mencabut charger saat baterai sudah penuh", "category": "safe", "explanation": "Mencabut charger menghemat listrik dan mencegah overheat." },
+          { "id": "d6", "text": "Ngecas power bank di atas kasur", "category": "unsafe", "explanation": "Power bank juga butuh sirkulasi udara saat ngecas." }
+        ]
+      }
+    }
+  ]
+}

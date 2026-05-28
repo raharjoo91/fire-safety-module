@@ -1,0 +1,42 @@
+{
+  "id": "6-misi-puncak",
+  "title": "Misi Puncak: Safety Squad",
+  "titleEn": "Capstone: Safety Squad Mission",
+  "order": 6,
+  "estimatedMinutes": 40,
+  "description": "Terapkan semua yang sudah kamu pelajari! Audit ruangan dan buat rencana keselamatan.",
+  "xpReward": 200,
+  "badgeId": "safety-squad",
+  "activities": [
+    {
+      "id": "intro",
+      "type": "info",
+      "title": "Misi Terakhir!",
+      "instruction": "Sekarang waktunya jadi Safety Squad sejati! Gunakan semua pengetahuanmu untuk membuat ruangan lebih aman.",
+      "content": {
+        "fact": "Selamat! Kamu sudah menyelesaikan 5 misi sebelumnya. Sekarang saatnya misi terbesar!",
+        "image": "/assets/backgrounds/03-lesson3-6-dorm-room-background.png"
+      }
+    },
+    {
+      "id": "room-audit",
+      "type": "room-audit",
+      "title": "Audit Kamar Asrama",
+      "instruction": "Seret tanda bahaya ke tempat-tempat yang menurutmu berbahaya di kamar ini.",
+      "content": {
+        "image": "/assets/lesson-specific/12-lesson6-capstone-audit-template.png",
+        "hazards": [
+          { "id": "ra1", "text": "Kabel sambung menyambung", "targetX": 25, "targetY": 45 },
+          { "id": "ra2", "text": "HP dicas di kasur", "targetX": 70, "targetY": 30 },
+          { "id": "ra3", "text": "Stopkontak kebanyakan colokan", "targetX": 40, "targetY": 60 },
+          { "id": "ra4", "text": "Kabel terkelupas", "targetX": 55, "targetY": 55 },
+          { "id": "ra5", "text": "Power strip non-SNI", "targetX": 35, "targetY": 65 }
+        ],
+        "distractors": [
+          { "id": "rd1", "text": "Buku di rak", "x": 10, "y": 15 },
+          { "id": "rd2", "text": "Sepatu di pintu", "x": 15, "y": 80 }
+        ]
+      }
+    }
+  ]
+}
