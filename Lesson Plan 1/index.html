@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Pembelajaran: Penyebab Kebakaran</title>
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --primary-color: #e63946; /* Merah Api - untuk bahaya */
+            --secondary-color: #f1faee; /* Putih Tulang - background */
+            --accent-color: #457b9d; /* Biru - untuk kepercayaan/informasi */
+            --dark-color: #1d3557; /* Biru Tua - teks utama */
+            --success-color: #2a9d8f; /* Hijau - untuk aman */
+            --warning-color: #e9c46a; /* Kuning - untuk peringatan */
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --radius: 12px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--secondary-color);
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 2.5rem; line-height: 1.2; }
+        h2 { font-size: 2rem; color: var(--primary-color); margin-top: 2rem; }
+        h3 { font-size: 1.5rem; color: var(--accent-color); }
+        p { margin-bottom: 1rem; font-size: 1.1rem; }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--warning-color);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, #fff 0%, #ffe5e5 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-badge {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+        }
+
+        .mascot-float {
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            width: 150px;
+            animation: float 3s ease-in-out infinite;
+            z-index: 3;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* --- FIRE TRIANGLE SECTION --- */
+        .triangle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .triangle-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* --- CARDS SECTION (UPDATED) --- */
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer; /* Menambahkan indikator klik */
+            border: 2px solid transparent; /* Border transparan untuk efek hover */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            border-color: var(--warning-color); /* Efek border saat hover */
+        }
+
+        .card-img-top {
+            width: 100%;
+            /* Perubahan Penting: height auto agar gambar tidak terpotong */
+            height: auto; 
+            object-fit: contain; /* Agar rasio gambar terjaga (tidak stretch/crop) */
+            display: block;
+            background-color: #fff; /* Background putih jika gambar transparan */
+        }
+
+        .card-body {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .card-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: #eee;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .card-badge.risk { background-color: #ffebee; color: #c62828; }
+        .card-badge.nature { background-color: #e0f2f1; color: #00695c; }
+
+        /* --- MODAL STYLES (POPUP) --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.6); 
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto; 
+            padding: 0;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 600px;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from {transform: translateY(-50px); opacity: 0;}
+            to {transform: translateY(0); opacity: 1;}
+        }
+
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-top-left-radius: var(--radius);
+            border-top-right-radius: var(--radius);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .close-modal {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: #ddd;
+        }
+
+        /* --- PREVENTION SECTION --- */
+        .checklist {
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .checklist-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .icon-box {
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .icon-do { background-color: #d4edda; color: #155724; }
+        .icon-dont { background-color: #f8d7da; color: #721c24; }
+
+        /* --- ASSESSMENT QUIZ --- */
+        .quiz-container {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .quiz-question {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .quiz-options label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            transition: background 0.2s;
+        }
+
+        .quiz-options label:hover {
+            background-color: #f9f9f9;
+        }
+
+        .quiz-options input {
+            margin-right: 10px;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: #c92a35;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            display: none;
+        }
+        .feedback.correct { background-color: #d4edda; color: #155724; display: block;}
+        .feedback.incorrect { background-color: #f8d7da; color: #721c24; display: block;}
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; } 
+            .mascot-float { width: 100px; right: 10px; }
+            .modal-content { width: 95%; margin: 30% auto;}
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container">
+            <div class="logo">
+                🔥 Modul Siaga Kebakaran
+            </div>
+            <ul class="nav-links">
+                <li><a href="#pendahuluan">Pendahuluan</a></li>
+                <li><a href="#konsep">Konsep</a></li>
+                <li><a href="#penyebab">Penyebab</a></li>
+                <li><a href="#pencegahan">Pencegahan</a></li>
+                <li><a href="#kuis">Kuis</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero" id="pendahuluan">
+        <div class="container">
+            <div class="grid-2">
+                <div class="hero-content">
+                    <span class="hero-badge">Tim Siaga Kebakaran</span>
+                    <h1>Memahami Penyebab Kebakaran di Lingkungan Kita</h1>
+                    <p>Pelajari mengapa kebakaran bisa terjadi, mulai dari korsleting listrik hingga faktor cuaca. Mari jadikan lingkungan sekolah dan rumah kita lebih aman!</p>
+                    <p><strong>Target:</strong> Siswa dapat mengidentifikasi risiko dan melakukan pencegahan.</p>
+                </div>
+                <div style="position: relative;">
+                    <img src="hero-penyebab-kebakaran.png" alt="Hero Penyebab Kebakaran" class="hero-img">
+                    <img src="mascot-siaga.png" alt="Mascot Siaga" class="mascot-float">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- CORE CONCEPT: FIRE TRIANGLE -->
+        <section class="section" id="konsep">
+            <div class="container">
+                <div class="grid-2">
+                    <div>
+                        <h2>Segitiga Api</h2>
+                        <p>Secara ilmiah, kebakaran hanya terjadi jika tiga unsur ini bertemu. Jika salah satu dihilangkan, api tidak akan menyala atau akan padam.</p>
+                        <ul>
+                            <li><strong>Panas (Heat):</strong> Sumber energi yang memicu bahan bakar.</li>
+                            <li><strong>Bahan Bakar (Fuel):</strong> Apa saja yang bisa terbakar (kayu, kertas, gas).</li>
+                            <li><strong>Oksigen (Oxygen):</strong> Udara di sekitar kita.</li>
+                        </ul>
+                        <p style="margin-top: 20px; font-style: italic;">"Tugas utama kita dalam pencegahan adalah memutus salah satu sisi dari segitiga ini."</p>
+                    </div>
+                    <div class="triangle-container">
+                        <!-- IMAGE PLACEHOLDER FOR SEGITIGA API -->
+                        <img src="segitiga-api.png" alt="Diagram Segitiga Api" class="triangle-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAUSES OF FIRE (CARD GRID) -->
+        <section class="section" id="penyebab">
+            <div class="container">
+                <div style="text-align: center; max-width: 700px; margin: 0 auto 40px auto;">
+                    <h2>Penyebab Utama Kebakaran</h2>
+                    <p>Berdasarkan data BMKG, berikut adalah penyebab paling umum di Indonesia. <strong>Klik pada kartu untuk melihat detail lebih lanjut!</strong></p>
+                </div>
+
+                <div class="grid-3">
+                    <!-- Card 1: Electrical -->
+                    <article class="card" onclick="openModal('Korsleting Listrik', 'Korsleting listrik adalah penyebab terbesar (61%). Terjadi karena arus listrik berlebih melewati jalur yang tidak semestinya, menimbulkan panas berlebih dan percikan api.', 'Periksa kabel secara berkala. Jangan gunakan steker bertumpuk (octopus).')">
+                        <img src="card-korsleting-listrik.png" alt="Ilustrasi Korsleting Listrik" class="card-img-top">
+                        <div class="card-body">
+                            <span class="card-badge risk">Penyebab #1 (61%)</span>
+                            <h3 class="card-title">Korsleting Listrik</h3>
+                            <p class="card-text">Penggunaan steker bertumpuk, kabel terkelupas, atau instalasi yang tidak standar.</p>
+                        </div>
+                    </article>
+
+                    <!-- Card 2: LPG -->
+                    <article class="card" onclick="openModal('Kebocoran LPG', 'Gas LPG mudah terbakar dan meledak jika tercampur udara. Kebocoran sering terjadi pada selang yang sudah getas atau regulator yang tidak kencang.', 'Gunakan detektor gas. Pastikan ventilasi dapur terbuka. Matikan tabung saat tidak digunakan.')">
+                        <img src="card-kebocoran-gas-lpg.png" alt="Ilustrasi Kebocoran Gas LPG" class="card-img-top">
+                        <div class="card-body">
+                            <span class="card-badge risk">Sangat Berbahaya</span>
+                            <h3 class="card-title">Kebocoran LPG</h3>
+                            <p class="card-text">Selang gas getas, regulator kendur, atau ventilasi dapur yang tertutup rapat.</p>
+                        </div>
+                    </article>
+
+                    <!-- Card 3: Cigarette -->
+                    <article class="card" onclick="openModal('Puntung Rokok', 'Puntung rokok masih mengandung bara api yang panas. Jika dibuang sembarangan di tempat kering atau sampah, bisa memicu kebakaran besar.', 'Larang merokok di dalam ruangan. Sediakan asbak berpasir jika merokok.')">
+                        <img src="card-puntung-rokok.png" alt="Ilustrasi Puntung Rokok" class="card-img-top">
+                        <div class="card-body">
+                            <span class="card-badge risk">Kelalaian</span>
+                            <h3 class="card-title">Puntung Rokok</h3>
+                            <p class="card-text">Membuang puntung yang masih menyala sembarangan, apalagi di tempat sampah atau tumpukan daun.</p>
+                        </div>
+                    </article>
+
+                    <!-- Card 4: Trash Burning -->
+                    <article class="card" onclick="openModal('Pembakaran Sampah', 'Membakar sampah secara terbuka sulit dikendalikan. Saat cuaca kering dan berangin, api bisa merembet ke rumah atau hutan.', 'Kelola sampah dengan 3R (Reduce, Reuse, Recycle). Jangan bakar sampah plastik.')">
+                        <img src="card-pembakaran-sampah.png" alt="Ilustrasi Pembakaran Sampah" class="card-img-top">
+                        <div class="card-body">
+                            <span class="card-badge risk">Kebiasaan</span>
+                            <h3 class="card-title">Pembakaran Sampah</h3>
+                            <p class="card-text">Membakar sampah di area terbuka saat cuaca kering dan berangin dapat memicu kebakaran besar.</p>
+                        </div>
+                    </article>
+
+                    <!-- Card 5: Flammable Materials -->
+                    <article class="card" onclick="openModal('Bahan Mudah Terbakar', 'Bahan seperti bensin, thinner, atau aerosol sangat mudah terbakar bahkan dengan percikan api kecil.', 'Simpan di tempat sejuk dan jauh dari matahari. Jauhkan dari kompor dan sumber panas lainnya.')">
+                        <img src="card-bahan-mudah-terbakar.png" alt="Ilustrasi Bahan Mudah Terbakar" class="card-img-top">
+                        <div class="card-body">
+                            <span class="card-badge risk">Penyimpanan</span>
+                            <h3 class="card-title">Bahan Mudah Terbakar</h3>
+                            <p class="card-text">Menyimpan bensin, thinner, atau aerosol dekat dengan sumber panas (kompor/lampu).</p>
+                        </div>
+                    </article>
+
+                    <!-- Card 6: Lightning -->
+                    <article class="card" onclick="openModal('Petir & Cuaca Kering', 'Sambaran petir menghasilkan suhu sangat tinggi yang bisa membakar bangunan. Cuaca kering membuat tanaman dan material mudah terbakar menjadi bahan bakar siap pakai.', 'Gunakan penangkal petir. Jangan keluar saat badai petir. Jaga kelembapan tanaman di musim kemarau.')">
+                        <img src="card-petir-cuaca-kering.png" alt="Ilustrasi Petir dan Cuaca Kering" class="card-img-top">
+                        <div class="card-body">
+                            <span class="card-badge nature">Faktor Alam</span>
+                            <h3 class="card-title">Petir & Cuaca Kering</h3>
+                            <p class="card-text">Sambaran petir ke bangunan tinggi atau kondisi kekeringan ekstrem yang membuat tanaman mudah terbakar.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- PREVENTION & RESPONSE -->
+        <section class="section" id="pencegahan">
+            <div class="container">
+                <h2>Pencegahan & Respons Aman</h2>
+                <p>Siswa SMP bukanlah pemadam api, tapi "Penjaga Keselamatan". Ketahui apa yang BOLEH dan TIDAK BOLEH dilakukan.</p>
+                
+                <div class="grid-2" style="margin-top: 30px;">
+                    <div class="checklist">
+                        <h3>✅ Tindakan Aman (Lakukan)</h3>
+                        <div class="checklist-item">
+                            <div class="icon-box icon-do">✓</div>
+                            <div>
+                                <strong>Saat Bau Gas:</strong> Membuka jendela dan pintu untuk ventilasi, lalu menjauh dari sumber api. Matikan kompor gas (jika aman).
+                            </div>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="icon-box icon-do">✓</div>
+                            <div>
+                                <strong>Saat Kabel Bermasalah:</strong> Memutus aliran listrik dari MCB (jika tahu caranya) atau memanggil orang dewasa/teknisi.
+                            </div>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="icon-box icon-do">✓</div>
+                            <div>
+                                <strong>Siapapun:</strong> Mengetahui nomor darurat pemadam kebakaran daerah (Contoh: 112 di Jakarta, 113 di beberapa daerah).
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checklist">
+                        <h3>❌ Tindakan Berbahaya (Hindari)</h3>
+                        <div class="checklist-item">
+                            <div class="icon-box icon-dont">✕</div>
+                            <div>
+                                <strong>Saat Bau Gas:</strong> Jangan menyalakan saklar lampu, menekan bel, atau menyalakan korek api/api. Percikan kecil bisa memicu ledakan!
+                            </div>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="icon-box icon-dont">✕</div>
+                            <div>
+                                <strong>Kebakaran Listrik:</strong> JANGAN menyiram dengan air. Air adalah penghantar listrik dan bisa membuat Anda tersengat listrik.
+                            </div>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="icon-box icon-dont">✕</div>
+                            <div>
+                                <strong>Panas Berlebih:</strong> Jangan langsung menyentuh stopkontak yang panas atau kabel yang berasap.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ASSESSMENT QUIZ -->
+        <section class="section" id="kuis">
+            <div class="container">
+                <div class="quiz-container">
+                    <h2>📝 Kuis Pemahaman</h2>
+                    <p>Uji pengetahuanmu tentang materi di atas. Pilih jawaban yang paling tepat!</p>
+                    
+                    <form id="fireQuiz" onsubmit="return checkQuiz(event)">
+                        
+                        <!-- Question 1 -->
+                        <div class="quiz-question">
+                            <p><strong>1. Apa saja tiga unsur pembentuk "Segitiga Api"?</strong></p>
+                            <div class="quiz-options">
+                                <label><input type="radio" name="q1" value="a"> Air, Udara, Tanah</label>
+                                <label><input type="radio" name="q1" value="b"> Panas, Bahan Bakar, Oksigen</label>
+                                <label><input type="radio" name="q1" value="c"> Asap, Api, Abu</label>
+                            </div>
+                            <div id="feedback1" class="feedback"></div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="quiz-question">
+                            <p><strong>2. Apa yang harus dilakukan pertama kali jika kamu mencium bau gas menyengat di dapur?</strong></p>
+                            <div class="quiz-options">
+                                <label><input type="radio" name="q2" value="a"> Menyalakan lampu agar terang untuk mencari sumber kebocoran.</label>
+                                <label><input type="radio" name="q2" value="b"> Membuka jendela/pintu untuk ventilasi dan menjauh dari sumber api.</label>
+                                <label><input type="radio" name="q2" value="c"> Menyemprotkan parfum untuk menghilangkan bau.</label>
+                            </div>
+                            <div id="feedback2" class="feedback"></div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="quiz-question">
+                            <p><strong>3. Mengapa kita dilarang menyiram air pada kebakaran yang disebabkan oleh korsleting listrik?</strong></p>
+                            <div class="quiz-options">
+                                <label><input type="radio" name="q3" value="a"> Karena air akan membuat api menjadi lebih besar.</label>
+                                <label><input type="radio" name="q3" value="b"> Karena air adalah penghantar listrik dan berisiko menyengat kita.</label>
+                                <label><input type="radio" name="q3" value="c"> Karena air akan merusak perabotan rumah.</label>
+                            </div>
+                            <div id="feedback3" class="feedback"></div>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Cek Jawaban</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>Penyebab Kebakaran</p>
+            <p style="font-size: 0.8rem; color: #aaa;">Disusun untuk kebutuhan edukasi.</p>
+            <p>&copy; 2026 </p>
+        </div>
+    </footer>
+
+    <!-- MODAL POPUP FOR CARD DETAILS -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle" style="margin:0; color:white;">Judul Penyebab</h3>
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p id="modalDesc"><strong>Deskripsi:</strong> Detail penyebab akan muncul di sini.</p>
+                <hr style="margin: 15px 0; border: 0; border-top: 1px solid #eee;">
+                <p style="color: var(--success-color); font-weight: bold;">💡 Tips Pencegahan:</p>
+                <p id="modalTips">Tips pencegahan akan muncul di sini.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // --- QUIZ LOGIC ---
+        function checkQuiz(event) {
+            event.preventDefault(); // Mencegah reload halaman
+            
+            let score = 0;
+            
+            // Jawaban Benar
+            const answers = {
+                q1: 'b', 
+                q2: 'b', 
+                q3: 'b' 
+            };
+
+            // Helper function untuk check jawaban
+            const checkAnswer = (name, correctVal, feedbackId, correctMsg, wrongMsg) => {
+                const input = document.querySelector(`input[name="${name}"]:checked`);
+                const fb = document.getElementById(feedbackId);
+                
+                if (input) {
+                    if (input.value === correctVal) {
+                        fb.textContent = correctMsg;
+                        fb.className = "feedback correct";
+                        return 1;
+                    } else {
+                        fb.textContent = wrongMsg;
+                        fb.className = "feedback incorrect";
+                    }
+                } else {
+                    fb.textContent = "Silakan pilih jawaban.";
+                    fb.className = "feedback incorrect";
+                }
+                return 0;
+            };
+
+            score += checkAnswer('q1', answers.q1, 'feedback1', "Benar! Panas, bahan bakar, dan oksigen adalah kunci terjadinya api.", "Salah. Ingat kembali konsep Segitiga Api.");
+            score += checkAnswer('q2', answers.q2, 'feedback2', "Tepat! Langkah ini mengurangi konsentrasi gas dan mencegah percikan api.", "Salah. Menyalakan saklar atau api saat bau gas sangat berbahaya (bisa meledak).");
+            score += checkAnswer('q3', answers.q3, 'feedback3', "Benar! Air menghantarkan listrik, sehingga berbahaya bagi nyawa.", "Salah. Alasan utamanya adalah keselamatan diri dari sengatan listrik.");
+
+            // Tampilkan Hasil Akhir
+            if(score === 3) {
+                alert("Luar biasa! Kamu menjawab semua dengan benar. Kamu siap menjadi Penjaga Keselamatan!");
+            } else {
+                alert("Kamu mendapatkan nilai " + score + "/3. Coba lagi ya, pastikan aman!");
+            }
+        }
+
+        // --- MODAL LOGIC (CARD CLICK) ---
+        const modal = document.getElementById("infoModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalDesc = document.getElementById("modalDesc");
+        const modalTips = document.getElementById("modalTips");
+
+        function openModal(title, desc, tips) {
+            modalTitle.textContent = title;
+            modalDesc.innerHTML = `<strong>Deskripsi:</strong> ${desc}`;
+            modalTips.textContent = tips;
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

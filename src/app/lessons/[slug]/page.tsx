@@ -23,6 +23,7 @@ export default function LessonPage({ params }: { params: Promise<{ slug: string 
   const [score, setScore] = useState(0)
   const [completed, setCompleted] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [saved, setSaved] = useState(false)
 
   useEffect(() => {
     fetch(`/api/lessons/${slug}`)
@@ -50,15 +51,21 @@ export default function LessonPage({ params }: { params: Promise<{ slug: string 
         setCurrentActivity((prev) => prev + 1)
       } else {
         setCompleted(true)
+        setSaved(true)
+        if (lesson) {
+          const finalScore = Math.min(100, score + activityScore)
+          completeLesson(slug, finalScore, lesson.xpReward)
+        }
       }
     }, 1500)
-  }, [currentActivity, lesson, adjust])
+  }, [currentActivity, lesson, adjust, completeLesson, slug, score])
 
   const handleFinish = useCallback(() => {
-    if (lesson) {
+    if (lesson && !saved) {
       completeLesson(slug, score, lesson.xpReward)
+      setSaved(true)
     }
-  }, [slug, score, lesson, completeLesson])
+  }, [slug, score, lesson, completeLesson, saved])
 
   if (loading) {
     return (
@@ -87,7 +94,6 @@ export default function LessonPage({ params }: { params: Promise<{ slug: string 
         </div>
         <div className="flex gap-3 justify-center">
           <Button href="/" variant="primary">Kembali ke Peta Misi</Button>
-          <Button onClick={handleFinish} variant="secondary">Simpan Progress</Button>
         </div>
       </div>
     )
